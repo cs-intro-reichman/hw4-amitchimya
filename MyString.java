@@ -15,6 +15,10 @@ public class MyString {
         System.out.println(contains("personality", "dad")); // false
         System.out.println(contains("resignation", "sign")); // true
 
+        System.out.println("for me:");
+        System.out.println(contains("Effective presentations must be clear, concise, and humble", "leverage")); 
+
+
     }
 
     /** Returns the lowercase version of the given string. */
@@ -41,13 +45,16 @@ public class MyString {
         for (int i=0; i<str1.length(); i++) {
             if (str1.charAt(i)==str2.charAt(0)) {
                 boolean end = false;
-                for (int j=0; j<str2.length(); j++) {
+                for (int j=0; j<str2.length() && (i+j)<str1.length(); j++) {
                     if (str1.charAt(i+j)==str2.charAt(j)) {
                         end = true;
                     }
                     else {
                         end = false;
                         break;
+                    }
+                    if ((i+j+1)>=str1.length()) {
+                        end = false;
                     }
                 }
                 if (end==true) return true;
